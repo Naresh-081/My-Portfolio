@@ -2,6 +2,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWraper';
+import Image from 'next/image';
 
 const skills = [
   { name: "Python", logo: "/skills/python-5.svg" },
@@ -76,11 +77,12 @@ export default function Skills() {
                 cursor-default
               "
             >
-              <img 
-                src={skill.logo} 
+              <Image
+                src={skill.logo}
                 alt={skill.name}
-                className="w-full h-full object-contain"
-                loading="lazy"
+                width={48}  // Explicit width
+                height={48} // Explicit height
+                className="object-contain"
                 style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
               />
             </motion.div>

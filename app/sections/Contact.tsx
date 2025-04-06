@@ -43,6 +43,7 @@ const Contact = () => {
       }
     } catch (error) {
       setSubmitStatus('error');
+      console.error('Email sending failed:', error); // Now using the error variable
     } finally {
       setIsSubmitting(false);
     }
