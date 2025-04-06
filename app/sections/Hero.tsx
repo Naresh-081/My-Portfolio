@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ delay: 0.1, type: 'spring', stiffness: 100 }}
             className="text-2xl text-[#4f46e5] mb-6 font-medium"
           >
-            AI/ML Specialist • Full Stack Developer
+            MSCS Graduate Student • Frontend & ML Focused.
           </motion.p>
           
           <motion.p
@@ -63,9 +63,8 @@ export default function Hero() {
             transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
             className="text-lg text-gray-600 mb-8 leading-relaxed"
           >
-            Passionate about building intelligent systems that solve real-world problems.
-            Currently pursuing Masters in CS with focus on Large Language Models and
-            generative AI applications.
+            Master’s in Computer Science student specializing in Frontend Development, Machine Learning and Genrative AI.
+            Passionate about building intelligent systems that address real-world challenges.
           </motion.p>
 
           <motion.div

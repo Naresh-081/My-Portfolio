@@ -53,18 +53,17 @@ const projects = [
     ]
   },
   {
-    title: "XYZ Vision",
-    description: "Computer vision for industrial automation",
-    tags: ["Python", "OpenCV", "TensorFlow", "Flask"],
-    image: "/ccp.png",
+    title: "Mood Based Music Player",
+    tags: ["OpenCV", "TensorFlow", "Pygame", "Tkinter"],
+    image: "/Mood.webp",
     points: [
-      "Real-time object detection with 95% precision",
-      "Reduced processing time by 60% with model optimization",
-      "Custom dashboard for quality control monitoring"
+      "Used OpenCV with Haar cascades to detect faces.",
+      "Loads a pre-trained emotion model with Keras.",
+      "Captures real-time faces and predicts emotions.",
+      "Opens a music player GUI built using Tkinter and Pygame."
     ],
     links: [
-      { name: "Demo", url: "#", icon: <FiExternalLink /> },
-      { name: "Research", url: "https://github.com/your-repo/xyz-vision", icon: <FiGithub /> }
+      { name: "Code", url: "https://github.com/your-repo/xyz-vision", icon: <FiGithub /> }
     ]
   }// ... (keep your existing projects array)
 ];

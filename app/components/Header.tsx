@@ -56,7 +56,7 @@ export default function Header() {
             <a href="https://github.com/Naresh-081" target="_blank" className="text-gray-600 hover:text-[#4f46e5] transition-colors flex items-center">
               <FaGithub size={36} />
             </a>
-            <a href="www.linkedin.com/in/naresh-vemula-149b15238" target="_blank" className="text-gray-600 hover:text-[#4f46e5] transition-colors flex items-center">
+            <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5] transition-colors flex items-center">
               <FaLinkedin size={36} />
             </a>
             <a href="mailto:nvemula@islander.tamucc.edu" className="text-gray-600 hover:text-[#4f46e5] transition-colors flex items-center">

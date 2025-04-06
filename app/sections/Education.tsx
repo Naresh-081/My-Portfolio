@@ -41,8 +41,8 @@ export default function Education() {
             <ul className="space-y-1 text-gray-600">
               <li>• Advanced Software Engineering</li>
               <li>• Machine Learning Systems</li>
-              <li>• Natural Language Processing</li>
-              <li>• Cloud Computing Architecture</li>
+              <li>• Advanced Operating Systems</li>
+              <li>• Generative AI</li>
             </ul>
           </motion.div>
 
@@ -55,13 +55,13 @@ export default function Education() {
             className="bg-white p-8 rounded-xl shadow-md border border-gray-100"
           >
             <h3 className="text-xl font-bold mb-2 text-[#4f46e5]">
-              Bachelor of Technology in Computer Science
+              Bachelor of Technology in Computer Science and Engineering
             </h3>
             <p className="text-gray-600 mb-1">
-              Mahatma Gandhi Institute of Technology
+              Mahatma Gandhi Institute of Technology, INDIA
             </p>
             <p className="text-gray-500 text-sm mb-4">
-              Aug 2023 • GPA: 3.1/4.0
+              July 2019 - Aug 2023 • GPA: 3.1/4.0
             </p>
             
             <h4 className="font-semibold mb-2 text-gray-800">
@@ -70,7 +70,7 @@ export default function Education() {
             <ul className="space-y-1 text-gray-600">
               <li>• Data Structures & Algorithms</li>
               <li>• Database Management Systems</li>
-              <li>• Artificial Intelligence</li>
+              <li>• Computer Architecture</li>
               <li>• Computer Networks</li>
             </ul>
           </motion.div>
