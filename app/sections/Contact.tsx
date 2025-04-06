@@ -1,9 +1,12 @@
 // src/app/sections/Contact.tsx
+
+
 'use client';
 import { useState } from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaFilePdf } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import SectionWrapper from '../components/SectionWraper';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -24,16 +27,15 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus(null);
-
+  
     try {
-      // Form submission logic
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
+      const response = await emailjs.sendForm(
+        'service_7t7moih',  // Service ID
+        'template_cteh7wk', // Template ID
+        e.target as HTMLFormElement,  // Form Element
+        'jqEMOrc_xTsGxvLZH'  // Public API Key
+      );
+      if (response.status === 200) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', message: '' });
       } else {
@@ -45,6 +47,8 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+  
+  
 
   const contactItems = [
     {
