@@ -81,7 +81,7 @@ export default function Hero() {
               Contact Me
             </Link>
             <Link
-              href="https://drive.google.com/file/d/1HlnQTf5yc0OcK8nODAp46ekO8G4MZAvn/view" // Replace with your actual resume path
+              href="https://drive.google.com/file/d/1EoO0co1SZIB7NUeXAHN1dmUNI1f3VVX0/view" // Replace with your actual resume path
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white hover:bg-gray-50 text-gray-800 px-8 py-3 rounded-lg text-lg font-medium transition-colors shadow-lg hover:shadow-xl border border-gray-200"
