@@ -53,7 +53,7 @@ export default function Hero() {
             transition={{ delay: 0.1, type: 'spring', stiffness: 100 }}
             className="text-2xl text-[#4f46e5] mb-6 font-medium"
           >
-            MSCS Graduate Student • Frontend & ML Focused.
+            Data Science Enthusiast | Using Python, ML, and LLMs
           </motion.p>
           
           <motion.p
@@ -63,8 +63,7 @@ export default function Hero() {
             transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
             className="text-lg text-gray-600 mb-8 leading-relaxed"
           >
-            Master’s in Computer Science student specializing in Frontend Development, Machine Learning and Genrative AI.
-            Passionate about building intelligent systems that address real-world challenges.
+            <p>{"Hi, I'm Naresh Vemula — a master's student in Computer Science with a passion for solving real-world problems through data-driven and intelligent systems. I have worked on projects like phishing detection tools and emotion-aware applications, which reflect my growing interest in data analysis, machine learning, and user-focused solutions. Recently, I built an AI-powered cover letter and cold email generator using LLaMA 3, LangChain, and Streamlit, as part of my exploration into Generative AI. I'm actively learning more about prompt engineering, embeddings, and LLM integration to create impactful, scalable applications at the intersection of data and modern AI. "}</p>
           </motion.p>
 
           <motion.div
@@ -81,7 +80,7 @@ export default function Hero() {
               Contact Me
             </Link>
             <Link
-              href="https://drive.google.com/file/d/1EoO0co1SZIB7NUeXAHN1dmUNI1f3VVX0/view" // Replace with your actual resume path
+              href="https://drive.google.com/file/d/1GZKimnPkPZ5TbiYWULjiXn2ANHjmaj8q/view?usp=sharing" // Actual resume path
               target="_blank"
               rel="noopener noreferrer"
               className="bg-white hover:bg-gray-50 text-gray-800 px-8 py-3 rounded-lg text-lg font-medium transition-colors shadow-lg hover:shadow-xl border border-gray-200"

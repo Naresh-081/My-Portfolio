@@ -8,48 +8,45 @@ import SectionWrapper from '../components/SectionWraper';
 
 const projects = [
   {
-    title: "Empath AI",
-    description: "Emotion-sensitive support bot with human assistance",
-    tags: ["Python", "React.js", "FastAPI", "NLP", "LLMs"],
-    image: "/empath.png",
+    title: "GEN-AI-EMAIL – Cover Letter & Cold Email Generator",
+    tags: ["LangChain", "Streamlit", "LLaMA 3", "Groq", "Python"],
+    image: "/AI EMAIL.jpg",
     points: [
-      "Achieved 90% accuracy in emotion detection using TextBlob and Google LearnLM",
-      "Reduced response latency by 25% through optimized API architecture",
-      "Increased user engagement by 20% with seamless AI-human handoff"
+      "Developed an AI-powered web app that generates personalized cover letters and cold emails.",
+      "Uploads PDF resumes and extracts job details via pasted job post links using LangChain.",
+      "Powered by LLaMA 3 (70B) via Groq API for fast and accurate LLM responses.",
+      "Built with Streamlit for clean UI, LangChain for orchestration, and PyMuPDF for PDF parsing."
     ],
     links: [
-      { name: "Demo", url: "#", icon: <FiExternalLink /> },
-      { name: "Code", url: "https://github.com/your-repo/empath-ai", icon: <FiGithub /> }
+      { name: "Code", url: "https://github.com/Naresh-081/GEN-AI-EMAIL", icon: <FiGithub /> }
     ]
   },
   {
-    title: "UniLink",
-    description: "Distributed social platform for university students",
-    tags: ["FastAPI", "Cassandra", "Kafka", "Docker", "Redis"],
-    image: "/unilink.png",
+    title: "AI-Driven Real-Time Phishing Detection System",
+    tags: ["Python", "BERT", "FastAPI", "PyTorch", "Google Safe Browsing API"],
+    image: "/phishing.jpg",
     points: [
-      "Built real-time messaging with WebSocket and Kafka integration",
-      "Scaled to 10,000+ users with Cassandra database",
-      "Reduced load times by 40% using Redis caching"
+      "Built a hybrid phishing detection system using BERT and Google Safe Browsing API.",
+      "Achieved 100% accuracy in phishing URL and email classification.",
+      "Deployed with FastAPI handling 1000+ security requests/day with sub-second latency.",
+      "Trained on 66K+ phishing samples and outperformed XGBoost by 9%."
     ],
     links: [
-      { name: "Live", url: "#", icon: <FiExternalLink /> },
-      { name: "Code", url: "https://github.com/your-repo/unilink", icon: <FiGithub /> }
+      { name: "Code", url: "https://github.com/Naresh-081/Phishing_App", icon: <FiGithub /> }
     ]
   },
   {
-    title: "CCP Analyzer",
-    description: "Customer churn prediction system",
+    title: "Customer Churn Prediction System",
     tags: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
     image: "/ccp.png",
     points: [
-      "85% prediction accuracy using ensemble methods",
-      "Automated feature engineering pipeline",
-      "Interactive dashboard for business insights"
+      "Predicted customer churn using Logistic Regression, Random Forest, and XGBoost.",
+      "Achieved up to 85% accuracy on a 20K-row dataset.",
+      "Improved model performance by 12% through feature engineering.",
+      "Visualized key churn factors to assist business decision-making."
     ],
     links: [
-      { name: "Case Study", url: "#", icon: <FiExternalLink /> },
-      { name: "Notebook", url: "https://github.com/your-repo/ccp-analyzer", icon: <FiGithub /> }
+      { name: "Code", url: "https://github.com/Naresh-081/customer-churn-prediction", icon: <FiGithub /> }
     ]
   },
   {
@@ -63,9 +60,39 @@ const projects = [
       "Opens a music player GUI built using Tkinter and Pygame."
     ],
     links: [
-      { name: "Code", url: "https://github.com/your-repo/xyz-vision", icon: <FiGithub /> }
+      { name: "Code", url: "https://github.com/Naresh-081/mood-based-music-player", icon: <FiGithub /> }
     ]
-  }// ... (keep your existing projects array)
+  },
+  {
+    title: "UniLink – Social Network with Scalable Backend",
+    tags: ["FastAPI", "Redis", "Kafka", "Cassandra"],
+    image: "/UniLink.png",
+    points: [
+      "Built a scalable backend for real-time post creation and interaction.",
+      "Used Redis caching to reduce read latency by 40%.",
+      "Implemented Kafka for reliable message streaming at scale.",
+      "Designed with microservices and used Cassandra for fault-tolerant writes."
+    ],
+    links: [
+      { name: "Code", url: "https://github.com/Naresh-081/UniLink", icon: <FiGithub /> }
+    ]
+  },
+
+  {
+    title: "Empath AI",
+    description: "Emotion-sensitive support bot with human assistance",
+    tags: ["Python", "React.js", "FastAPI", "NLP", "LLMs"],
+    image: "/empath.png",
+    points: [
+      "Achieved 90% accuracy in emotion detection using TextBlob and Google LearnLM",
+      "Reduced response latency by 25% through optimized API architecture",
+      "Increased user engagement by 20% with seamless AI-human handoff"
+    ],
+    links: [
+      { name: "Demo", url: "#", icon: <FiExternalLink /> },
+      { name: "Code", url: "https://github.com/Naresh-081/EMPATH-AI-CHATBOT", icon: <FiGithub /> }
+    ]
+  },
 ];
 
 const slideInVariants = {
