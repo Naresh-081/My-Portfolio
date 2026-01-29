@@ -32,7 +32,7 @@ export default function Education() {
               Texas A&M University - Corpus Christi
             </p>
             <p className="text-gray-500 text-sm mb-4">
-              Expected Dec 2025 • GPA: 3.7/4.0
+            Jan 2024 - Dec 2025 • GPA: 3.3/4.0
             </p>
             
             <h4 className="font-semibold mb-2 text-gray-800">

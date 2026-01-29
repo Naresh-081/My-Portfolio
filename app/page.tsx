@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Hero from "./sections/Hero";
 import Education from "./sections/Education";
 import Skills from "./sections/Skills";
+import Experience from "./sections/Experience";
 import Projects from "./sections/Projects";
 import Contact from "./sections/Contact";
 import Footer from "./components/Footer";
@@ -24,6 +25,11 @@ export default function Home() {
       {/* Skills - Reduced padding */}
       <SectionWrapper id="skills" reducedPadding>
         <Skills />
+      </SectionWrapper>
+
+      {/* Experience - Reduced padding */}
+      <SectionWrapper id="experience" reducedPadding>
+        <Experience />
       </SectionWrapper>
       
       {/* Projects - Standard padding */}

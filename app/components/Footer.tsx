@@ -12,7 +12,7 @@ export default function Footer() {
           <a href="https://linkedin.com/in/nareshvemula" target="_blank" className="hover:text-white transition-colors">
             <FaLinkedin size={24} />
           </a>
-          <a href="mailto:nvemula@islander.tamucc.edu" className="hover:text-white transition-colors">
+          <a href="mailto:nareshvemula1927@gmail.com" className="hover:text-white transition-colors">
             <FaEnvelope size={24} />
           </a>
         </div>

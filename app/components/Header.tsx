@@ -17,7 +17,7 @@ export default function Header() {
     });
   };
 
-  const navLinks = ['education', 'skills', 'projects', 'contact'];
+  const navLinks = [ 'education', 'skills', 'experience', 'projects', 'contact'];
 
   return (
     <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
@@ -55,7 +55,7 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
             <FaLinkedin size={24} />
           </a>
-          <a href="mailto:nvemula@islander.tamucc.edu" className="text-gray-600 hover:text-[#4f46e5]">
+          <a href="mailto:nareshvemula1927@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
             <FaEnvelope size={24} />
           </a>
         </div>
@@ -95,7 +95,7 @@ export default function Header() {
             <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
               <FaLinkedin size={24} />
             </a>
-            <a href="mailto:nvemula@islander.tamucc.edu" className="text-gray-600 hover:text-[#4f46e5]">
+            <a href="mailto:nareshvemula1927@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
               <FaEnvelope size={24} />
             </a>
           </div>

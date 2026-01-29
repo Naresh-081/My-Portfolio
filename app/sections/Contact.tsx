@@ -79,8 +79,8 @@ const Contact = () => {
     {
       icon: <FaFilePdf className="w-5 h-5" />,
       title: "Resume",
-      content: "Download PDF",
-      href: "https://drive.google.com/file/d/1HlnQTf5yc0OcK8nODAp46ekO8G4MZAvn/view?usp=sharing"
+      content: "View",
+      href: "https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
     }
   ];
 
