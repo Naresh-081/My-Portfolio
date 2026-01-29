@@ -63,7 +63,7 @@ export default function Hero() {
             transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
             className="text-lg text-gray-600 mb-8 leading-relaxed"
           >
-            <p>{"Data Engineer with over 3 years of experience building high-performance data solutions. I specialize in designing automated ETL pipelines and cloud-based data models that process millions of daily transactions with 99.8% accuracy. From optimizing Snowflake queries to architecting real-time streaming systems with Kafka , I focus on turning complex datasets into reliable, actionable insights for enterprise decision-making. "}</p>
+            <p>{"Data Engineer with over 3+ years of experience building high-performance data solutions. I specialize in designing automated ETL pipelines and cloud-based data models that process millions of daily transactions with 99.8% accuracy. From optimizing Snowflake queries to architecting real-time streaming systems with Kafka , I focus on turning complex datasets into reliable, actionable insights for enterprise decision-making. "}</p>
           </motion.p>
 
           <motion.div
