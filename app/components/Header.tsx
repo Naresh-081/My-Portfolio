@@ -66,13 +66,7 @@ export default function Header() {
              className="text-slate-400 hover:text-white transition-colors">
             <FaLinkedin size={18} />
           </a>
-          <a
-            href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
-            target="_blank" rel="noopener noreferrer"
-            className="text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 rounded-lg transition-colors"
-          >
-            Resume
-          </a>
+          
         </div>
 
         {/* Mobile toggle */}
