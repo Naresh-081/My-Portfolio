@@ -1,23 +1,24 @@
-// components/SectionWrapper.tsx
 'use client';
 
 export default function SectionWrapper({
   id,
   children,
   className = '',
-  reducedPadding = false
+  reducedPadding = false,
+  bgClass = 'bg-gradient-to-br from-gray-50 to-gray-100'
 }: {
   id: string;
   children: React.ReactNode;
   className?: string;
   reducedPadding?: boolean;
+  bgClass?: string;
 }) {
   return (
-    <section 
+    <section
       id={id}
       className={`
         ${reducedPadding ? 'py-12 lg:py-16' : 'py-16 lg:py-20'}
-        bg-gradient-to-br from-gray-50 to-gray-100
+        ${bgClass}
         text-gray-800
         ${className}
       `}

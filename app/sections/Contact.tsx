@@ -55,8 +55,8 @@ const Contact = () => {
     {
       icon: <FaEnvelope className="w-5 h-5" />,
       title: "Email",
-      content: "nvemula@islander.tamucc.edu",
-      href: "mailto:nvemula@islander.tamucc.edu"
+      content: "vemulanaresh333@gmail.com",
+      href: "mailto:vemulanaresh333@gmail.com"
     },
     {
       icon: <FaPhoneAlt className="w-5 h-5" />,

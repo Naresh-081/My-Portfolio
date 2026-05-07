@@ -1,310 +1,156 @@
-// src/app/sections/Projects.tsx
 'use client';
-import { useState, useRef } from 'react';
-import { FiChevronLeft, FiChevronRight, FiGithub, FiExternalLink } from 'react-icons/fi';
-import { motion, useInView } from 'framer-motion';
-import Image from 'next/image';
-import SectionWrapper from '../components/SectionWraper';
+import { motion } from 'framer-motion';
+import { FiGithub, FiExternalLink } from 'react-icons/fi';
 
 const projects = [
   {
-    title: "GEN-AI-EMAIL – Cover Letter & Cold Email Generator",
-    tags: ["LangChain", "Streamlit", "LLaMA 3", "Groq", "Python"],
-    image: "/AI EMAIL.jpg",
+    title: "LLM-Powered NL-to-SQL Data Assistant",
+    year: "2026",
+    gradient: "from-violet-600 to-indigo-600",
+    icon: "🤖",
+    tags: ["Python", "LangChain", "OpenAI API", "FAISS", "Snowflake", "FastAPI"],
     points: [
-      "Developed an AI-powered web app that generates personalized cover letters and cold emails.",
-      "Uploads PDF resumes and extracts job details via pasted job post links using LangChain.",
-      "Powered by LLaMA 3 (70B) via Groq API for fast and accurate LLM responses.",
-      "Built with Streamlit for clean UI, LangChain for orchestration, and PyMuPDF for PDF parsing."
+      "Built an AI assistant converting natural language to Snowflake SQL using LangChain + OpenAI, with RAG over schema metadata via FAISS embeddings; cut manual SQL dependency by ~40% in testing.",
+      "Exposed the pipeline as a REST API via FastAPI with async query execution and structured JSON responses, ready for BI tool integration."
     ],
-    links: [
-      { name: "Code", url: "https://github.com/Naresh-081/GEN-AI-EMAIL", icon: <FiGithub /> }
-    ]
+    links: []
+  },
+  {
+    title: "Real-Time Streaming Pipeline with Anomaly Detection",
+    year: "2025",
+    gradient: "from-orange-500 to-rose-600",
+    icon: "⚡",
+    tags: ["Apache Kafka", "Spark Structured Streaming", "Python", "AWS S3", "Airflow"],
+    points: [
+      "Designed an event-driven pipeline using Kafka and Spark Structured Streaming to ingest high-volume data in near real-time, writing enriched outputs to partitioned S3 tables with Airflow-orchestrated alerting DAGs.",
+      "Integrated statistical anomaly detection into the Spark pipeline to flag irregular patterns within seconds; sustained 3× simulated load with zero message loss."
+    ],
+    links: []
+  },
+  {
+    title: "RAG-Based Document Search & Q&A System",
+    year: "2025",
+    gradient: "from-emerald-500 to-teal-600",
+    icon: "🔍",
+    tags: ["Python", "LangChain", "Pinecone", "OpenAI API", "FastAPI", "Docker"],
+    points: [
+      "Built a semantic search system over document corpora using LangChain, OpenAI embeddings, and Pinecone vector DB; implemented RAG pipeline feeding retrieved chunks to GPT-4 for grounded, citation-aware answers.",
+      "Containerized the full stack with Docker and served via FastAPI, enabling repeatable deployment and clean integration with existing internal tooling."
+    ],
+    links: []
+  },
+  {
+    title: "GEN-AI-EMAIL – Cover Letter & Cold Email Generator",
+    year: "2024",
+    gradient: "from-sky-500 to-blue-600",
+    icon: "✉️",
+    tags: ["LangChain", "Streamlit", "LLaMA 3", "Groq API", "Python", "PyMuPDF"],
+    points: [
+      "Developed an AI-powered web app that generates personalized cover letters and cold emails by uploading PDF resumes and extracting job details via pasted job post links.",
+      "Powered by LLaMA 3 (70B) via Groq API for fast LLM responses; built with Streamlit UI and LangChain orchestration."
+    ],
+    links: [{ label: "GitHub", url: "https://github.com/Naresh-081/GEN-AI-EMAIL", icon: "github" }]
   },
   {
     title: "AI-Driven Real-Time Phishing Detection System",
+    year: "2024",
+    gradient: "from-red-500 to-pink-600",
+    icon: "🛡️",
     tags: ["Python", "BERT", "FastAPI", "PyTorch", "Google Safe Browsing API"],
-    image: "/phishing.jpg",
     points: [
-      "Built a hybrid phishing detection system using BERT and Google Safe Browsing API.",
-      "Achieved 100% accuracy in phishing URL and email classification.",
-      "Deployed with FastAPI handling 1000+ security requests/day with sub-second latency.",
-      "Trained on 66K+ phishing samples and outperformed XGBoost by 9%."
+      "Built a hybrid phishing detection system using BERT and Google Safe Browsing API, achieving 100% accuracy in phishing URL and email classification; trained on 66K+ samples.",
+      "Deployed with FastAPI handling 1000+ security requests/day with sub-second latency, outperforming XGBoost baseline by 9%."
     ],
-    links: [
-      { name: "Code", url: "https://github.com/Naresh-081/Phishing_App", icon: <FiGithub /> }
-    ]
-  },
-  {
-    title: "Customer Churn Prediction System",
-    tags: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
-    image: "/ccp.png",
-    points: [
-      "Predicted customer churn using Logistic Regression, Random Forest, and XGBoost.",
-      "Achieved up to 85% accuracy on a 20K-row dataset.",
-      "Improved model performance by 12% through feature engineering.",
-      "Visualized key churn factors to assist business decision-making."
-    ],
-    links: [
-      { name: "Code", url: "https://github.com/Naresh-081/customer-churn-prediction", icon: <FiGithub /> }
-    ]
-  },
-  {
-    title: "Mood Based Music Player",
-    tags: ["OpenCV", "TensorFlow", "Pygame", "Tkinter"],
-    image: "/Mood.webp",
-    points: [
-      "Used OpenCV with Haar cascades to detect faces.",
-      "Loads a pre-trained emotion model with Keras.",
-      "Captures real-time faces and predicts emotions.",
-      "Opens a music player GUI built using Tkinter and Pygame."
-    ],
-    links: [
-      { name: "Code", url: "https://github.com/Naresh-081/mood-based-music-player", icon: <FiGithub /> }
-    ]
-  },
-  {
-    title: "UniLink – Social Network with Scalable Backend",
-    tags: ["FastAPI", "Redis", "Kafka", "Cassandra"],
-    image: "/UniLink.png",
-    points: [
-      "Built a scalable backend for real-time post creation and interaction.",
-      "Used Redis caching to reduce read latency by 40%.",
-      "Implemented Kafka for reliable message streaming at scale.",
-      "Designed with microservices and used Cassandra for fault-tolerant writes."
-    ],
-    links: [
-      { name: "Code", url: "https://github.com/Naresh-081/UniLink", icon: <FiGithub /> }
-    ]
-  },
-
-  {
-    title: "Empath AI",
-    description: "Emotion-sensitive support bot with human assistance",
-    tags: ["Python", "React.js", "FastAPI", "NLP", "LLMs"],
-    image: "/empath.png",
-    points: [
-      "Achieved 90% accuracy in emotion detection using TextBlob and Google LearnLM",
-      "Reduced response latency by 25% through optimized API architecture",
-      "Increased user engagement by 20% with seamless AI-human handoff"
-    ],
-    links: [
-      { name: "Demo", url: "#", icon: <FiExternalLink /> },
-      { name: "Code", url: "https://github.com/Naresh-081/EMPATH-AI-CHATBOT", icon: <FiGithub /> }
-    ]
-  },
+    links: [{ label: "GitHub", url: "https://github.com/Naresh-081/Phishing_App", icon: "github" }]
+  }
 ];
 
-const slideInVariants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut"
-    }
-  }
-};
-
-const projectVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0
-  }),
-  center: {
-    x: 0,
-    opacity: 1
-  },
-  exit: (direction: number) => ({
-    x: direction > 0 ? -1000 : 1000,
-    opacity: 0
-  })
-};
-
 export default function Projects() {
-  const [currentProject, setCurrentProject] = useState(0);
-  const [hoveredProject, setHoveredProject] = useState<number | null>(null);
-  const [direction, setDirection] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
-
-  const navigateProject = (newDirection: number) => {
-    setDirection(newDirection);
-    if (newDirection > 0) {
-      setCurrentProject((prev) => (prev + 1) % projects.length);
-    } else {
-      setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
-    }
-  };
-
   return (
-    <SectionWrapper id="projects">
-      <motion.div
-        ref={ref}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-        variants={slideInVariants}
+    <>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="text-3xl font-bold mb-4 text-center text-gray-800"
       >
-        <h2 className="text-3xl font-bold mb-12 text-center text-gray-800">
-          Featured <span className="text-[#4f46e5]">Projects</span>
-        </h2>
+        Featured <span className="text-[#4f46e5]">Projects</span>
+      </motion.h2>
 
-        <div className="relative max-w-6xl mx-auto">
-          {/* Navigation Arrows */}
-          <button 
-            onClick={() => navigateProject(-1)}
-            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors"
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-center text-gray-500 mb-12 max-w-xl mx-auto"
+      >
+        Data engineering and AI projects spanning real-time pipelines, LLM applications, and cloud platforms
+      </motion.p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((project, index) => (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, margin: "-40px" }}
+            transition={{ duration: 0.45, delay: index * 0.08 }}
+            className="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden flex flex-col hover:shadow-xl transition-shadow duration-300"
           >
-            <FiChevronLeft className="w-6 h-6 text-[#4f46e5]" />
-          </button>
-          
-          <button 
-            onClick={() => navigateProject(1)}
-            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-3 rounded-full bg-white shadow-lg hover:bg-gray-50 transition-colors"
-          >
-            <FiChevronRight className="w-6 h-6 text-[#4f46e5]" />
-          </button>
+            {/* Gradient header */}
+            <div className={`bg-gradient-to-r ${project.gradient} px-5 py-4 flex items-center justify-between`}>
+              <span className="text-2xl">{project.icon}</span>
+              <span className="text-white/80 text-sm font-medium">{project.year}</span>
+            </div>
 
-          {/* Project Content */}
-          <div className="flex flex-col lg:flex-row gap-8 items-center px-10">
-            {/* Image Card (Left) */}
-            <motion.div
-              key={`image-${currentProject}`}
-              custom={direction}
-              variants={projectVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 }
-              }}
-              className="w-full lg:w-1/2 relative aspect-video rounded-xl shadow-xl overflow-hidden"
-              onMouseEnter={() => setHoveredProject(currentProject)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              <Image
-                src={projects[currentProject].image}
-                alt={projects[currentProject].title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 50vw"
-              />
-              
-              {/* Hover Overlay */}
-              {hoveredProject === currentProject && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute inset-0 bg-[#4f46e5]/90 flex flex-col items-center justify-center gap-4 p-6"
-                >
-                  <h3 className="text-xl font-bold text-white">Project Links</h3>
-                  <div className="flex flex-col gap-3 w-full max-w-xs">
-                    {projects[currentProject].links.map((link, i) => (
-                      <a
-                        key={i}
-                        href={link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 bg-white text-[#4f46e5] py-2 px-4 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-                      >
-                        {link.icon}
-                        {link.name}
-                      </a>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
+            <div className="p-5 flex flex-col flex-1">
+              <h3 className="text-base font-bold text-gray-800 mb-3 leading-snug">
+                {project.title}
+              </h3>
 
-            {/* Details Card (Right) */}
-            <motion.div
-              key={`details-${currentProject}`}
-              custom={direction}
-              variants={projectVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.2 },
-                delay: 0.1
-              }}
-              className="w-full lg:w-1/2 space-y-6 bg-white p-8 rounded-xl shadow-md border border-gray-100"
-            >
-              <h3 className="text-2xl font-bold text-gray-800">{projects[currentProject].title}</h3>
-              
-              <p className="text-gray-600">{projects[currentProject].description}</p>
-              
-              <div className="space-y-3">
-                <h4 className="font-semibold text-gray-800">Key Achievements:</h4>
-                <ul className="space-y-2">
-                  {projects[currentProject].points.map((point, i) => (
-                    <motion.li 
-                      key={i}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2 + i * 0.1 }}
-                      className="flex items-start"
-                    >
-                      <span className="text-[#4f46e5] mr-2">•</span>
-                      <span className="text-gray-600">{point}</span>
-                    </motion.li>
-                  ))}
-                </ul>
+              <ul className="space-y-2 mb-4 flex-1">
+                {project.points.map((point, i) => (
+                  <li key={i} className="flex items-start gap-2 text-sm text-gray-600 leading-relaxed">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-[#4f46e5] shrink-0" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5 mb-4">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-2 py-0.5 bg-gray-100 text-gray-600 text-xs rounded-full"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-                className="pt-4"
-              >
-                <h4 className="font-semibold text-gray-800 mb-2">Technologies Used:</h4>
-                <div className="flex flex-wrap gap-2">
-                  {projects[currentProject].tags.map((tag, i) => (
-                    <motion.span 
+              {/* Links */}
+              {project.links.length > 0 && (
+                <div className="flex gap-3 pt-2 border-t border-gray-100">
+                  {project.links.map((link, i) => (
+                    <a
                       key={i}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 + i * 0.05 }}
-                      className="px-3 py-1 bg-[#4f46e5]/10 text-[#4f46e5] text-sm rounded-full"
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-1.5 text-sm text-[#4f46e5] hover:text-[#4338ca] font-medium transition-colors"
                     >
-                      {tag}
-                    </motion.span>
+                      {link.icon === "github" ? <FiGithub className="w-4 h-4" /> : <FiExternalLink className="w-4 h-4" />}
+                      {link.label}
+                    </a>
                   ))}
                 </div>
-              </motion.div>
-            </motion.div>
-          </div>
-
-          {/* Dot Indicators */}
-          <motion.div 
-            className="flex justify-center gap-2 mt-8"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-          >
-            {projects.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setDirection(index > currentProject ? 1 : -1);
-                  setCurrentProject(index);
-                }}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  index === currentProject 
-                    ? 'bg-[#4f46e5] w-6' 
-                    : 'bg-gray-300 hover:bg-gray-400'
-                }`}
-                aria-label={`Go to project ${index + 1}`}
-              />
-            ))}
+              )}
+            </div>
           </motion.div>
-        </div>
-      </motion.div>
-    </SectionWrapper>
+        ))}
+      </div>
+    </>
   );
 }

@@ -1,4 +1,3 @@
-// app/page.tsx
 import Header from "./components/Header";
 import Hero from "./sections/Hero";
 import Education from "./sections/Education";
@@ -13,35 +12,29 @@ export default function Home() {
   return (
     <main className="relative bg-white dark:bg-gray-900">
       <Header />
-      
-      {/* Hero - Full viewport height without wrapper */}
+
       <Hero />
-      
-      {/* About - Standard padding */}
+
       <SectionWrapper id="education">
         <Education />
       </SectionWrapper>
-      
-      {/* Skills - Reduced padding */}
-      <SectionWrapper id="skills" reducedPadding>
+
+      <SectionWrapper id="skills" reducedPadding bgClass="bg-white">
         <Skills />
       </SectionWrapper>
 
-      {/* Experience - Reduced padding */}
       <SectionWrapper id="experience" reducedPadding>
         <Experience />
       </SectionWrapper>
-      
-      {/* Projects - Standard padding */}
-      <SectionWrapper id="projects">
+
+      <SectionWrapper id="projects" bgClass="bg-white">
         <Projects />
       </SectionWrapper>
-      
-      {/* Contact - Reduced padding */}
+
       <SectionWrapper id="contact" reducedPadding>
         <Contact />
       </SectionWrapper>
-      
+
       <Footer />
     </main>
   );

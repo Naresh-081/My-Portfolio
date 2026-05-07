@@ -55,7 +55,7 @@ export default function Header() {
           <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
             <FaLinkedin size={24} />
           </a>
-          <a href="mailto:nareshvemula1927@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
+          <a href="mailto:vemulanaresh333@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
             <FaEnvelope size={24} />
           </a>
         </div>
@@ -95,7 +95,7 @@ export default function Header() {
             <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
               <FaLinkedin size={24} />
             </a>
-            <a href="mailto:nareshvemula1927@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
+            <a href="mailto:vemulanaresh333@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
               <FaEnvelope size={24} />
             </a>
           </div>

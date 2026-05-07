@@ -1,100 +1,105 @@
-// src/app/sections/Skills.tsx
 'use client';
 import { motion } from 'framer-motion';
-import SectionWrapper from '../components/SectionWraper';
-import Image from 'next/image';
 
-const skills = [
-  { name: "Python", logo: "/skills/python-5.svg" },
-  { name: "JavaScript", logo: "/skills/javascript-2.svg" },
-  { name: "C", logo: "/skills/c-1.svg" },
-  { name: "NumPy", logo: "/skills/numpy-1.svg" },
-  { name: "Pandas", logo: "/skills/pandas.svg" },
-  { name: "Matplotlib", logo: "/skills/matplotlib-1.svg" },
-  { name: "HTML", logo: "/skills/html-1.svg" },
-  { name: "CSS", logo: "/skills/css-3.svg" },
-  { name: "Tailwind", logo: "/skills/tailwind-css-2.svg" },
-  { name: "React.js", logo: "/skills/react-2.svg" },
-  { name: "Next.js", logo: "/skills/next-js.svg" },
-  { name: "Figma", logo: "/skills/figma-icon.svg" },
-  { name: "Git", logo: "/skills/git.svg" },
-  { name: "Linux", logo: "/skills/linux-tux.svg" },
-  { name: "Postman", logo: "/skills/postman.svg" },
-  { name: "GitHub", logo: "/skills/github-icon-2.svg" },
-  { name: "Docker", logo: "/skills/docker.svg" }
+const skillCategories = [
+  {
+    label: "Languages & Query",
+    color: "blue" as const,
+    skills: ["Python", "SQL", "PySpark", "Spark SQL"]
+  },
+  {
+    label: "Data Engineering",
+    color: "indigo" as const,
+    skills: ["ETL / ELT Pipelines", "Apache Airflow", "dbt", "Apache Spark", "Delta Lake", "Apache Iceberg", "Data Modeling"]
+  },
+  {
+    label: "Streaming & Real-Time",
+    color: "orange" as const,
+    skills: ["Apache Kafka", "Spark Structured Streaming"]
+  },
+  {
+    label: "Cloud & Platforms",
+    color: "sky" as const,
+    skills: ["AWS S3", "AWS Glue", "AWS EMR", "AWS Lambda", "Redshift", "Athena", "Snowflake", "Databricks"]
+  },
+  {
+    label: "AI / LLM (Applied)",
+    color: "violet" as const,
+    skills: ["LangChain", "OpenAI API", "RAG Pipelines", "FAISS", "Pinecone", "Embeddings", "Semantic Search"]
+  },
+  {
+    label: "DevOps & Quality",
+    color: "emerald" as const,
+    skills: ["Docker", "FastAPI", "GitHub Actions (CI/CD)", "Git", "Great Expectations", "Pipeline Monitoring"]
+  }
 ];
 
-const slideIn = {
-  hidden: { opacity: 0, y: 50 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      type: 'spring',
-      stiffness: 100,
-      damping: 10
-    }
-  }
+type ColorKey = "blue" | "indigo" | "orange" | "sky" | "violet" | "emerald";
+
+const colorMap: Record<ColorKey, { card: string; badge: string; header: string; dot: string }> = {
+  blue:    { card: "border-blue-200 bg-blue-50/60",    badge: "bg-blue-100 text-blue-700",    header: "text-blue-600",    dot: "bg-blue-500" },
+  indigo:  { card: "border-indigo-200 bg-indigo-50/60", badge: "bg-indigo-100 text-indigo-700", header: "text-indigo-600",  dot: "bg-indigo-500" },
+  orange:  { card: "border-orange-200 bg-orange-50/60", badge: "bg-orange-100 text-orange-700", header: "text-orange-600",  dot: "bg-orange-500" },
+  sky:     { card: "border-sky-200 bg-sky-50/60",       badge: "bg-sky-100 text-sky-700",       header: "text-sky-600",     dot: "bg-sky-500" },
+  violet:  { card: "border-violet-200 bg-violet-50/60", badge: "bg-violet-100 text-violet-700", header: "text-violet-600",  dot: "bg-violet-500" },
+  emerald: { card: "border-emerald-200 bg-emerald-50/60", badge: "bg-emerald-100 text-emerald-700", header: "text-emerald-600", dot: "bg-emerald-500" }
 };
 
 export default function Skills() {
   return (
-    <SectionWrapper id="skills">
+    <>
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="text-3xl font-bold mb-12 text-center text-gray-800"
+        className="text-3xl font-bold mb-4 text-center text-gray-800"
       >
-        My <span className="text-[#4f46e5]">Tech Stack</span>
+        Technical <span className="text-[#4f46e5]">Skills</span>
       </motion.h2>
 
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-6">
-        {skills.map((skill, index) => (
-          <motion.div
-            key={skill.name}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, margin: "-20px" }}
-            variants={slideIn}
-            custom={index}
-            className="flex flex-col items-center"
-          >
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-center text-gray-500 mb-10 max-w-xl mx-auto"
+      >
+        Core stack for building data pipelines, cloud platforms, and AI-powered analytics
+      </motion.p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {skillCategories.map((cat, index) => {
+          const colors = colorMap[cat.color];
+          return (
             <motion.div
-              whileHover={{
-                y: -10,
-                scale: 1.1,
-                boxShadow: '0 10px 25px -5px rgba(79, 70, 229, 0.3)'
-              }}
-              transition={{ type: 'spring', stiffness: 300 }}
-              className="
-                w-20 h-20 p-4
-                bg-white
-                rounded-xl shadow-md
-                flex items-center justify-center
-                border border-gray-100
-                cursor-default
-              "
+              key={cat.label}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className={`rounded-xl border p-5 ${colors.card}`}
             >
-              <Image
-                src={skill.logo}
-                alt={skill.name}
-                width={48}  // Explicit width
-                height={48} // Explicit height
-                className="object-contain"
-                style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))' }}
-              />
+              <div className="flex items-center gap-2 mb-3">
+                <div className={`w-2 h-2 rounded-full shrink-0 ${colors.dot}`} />
+                <h3 className={`font-semibold text-sm uppercase tracking-wider ${colors.header}`}>
+                  {cat.label}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className={`px-3 py-1 rounded-full text-sm font-medium ${colors.badge}`}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
             </motion.div>
-            <motion.span 
-              className="mt-3 text-sm font-medium text-gray-600"
-              whileHover={{ color: '#4f46e5' }}
-            >
-              {skill.name}
-            </motion.span>
-          </motion.div>
-        ))}
+          );
+        })}
       </div>
-    </SectionWrapper>
+    </>
   );
 }
