@@ -34,83 +34,64 @@ const categories = [
   },
 ];
 
-const borderColor: Record<string, string> = {
-  indigo:  "border-indigo-500",
-  blue:    "border-blue-500",
-  orange:  "border-orange-500",
-  sky:     "border-sky-500",
-  violet:  "border-violet-500",
-  emerald: "border-emerald-500",
-};
-
-const labelColor: Record<string, string> = {
-  indigo:  "text-indigo-600",
-  blue:    "text-blue-600",
-  orange:  "text-orange-600",
-  sky:     "text-sky-600",
-  violet:  "text-violet-600",
-  emerald: "text-emerald-600",
-};
-
-const badgeColor: Record<string, string> = {
-  indigo:  "bg-indigo-50 text-indigo-700",
-  blue:    "bg-blue-50 text-blue-700",
-  orange:  "bg-orange-50 text-orange-700",
-  sky:     "bg-sky-50 text-sky-700",
-  violet:  "bg-violet-50 text-violet-700",
-  emerald: "bg-emerald-50 text-emerald-700",
+const styles: Record<string, { border: string; label: string; badge: string; glow: string }> = {
+  indigo:  { border: "border-indigo-500/50",  label: "text-indigo-400",  badge: "bg-indigo-500/10 text-indigo-300 hover:bg-indigo-500/25 border border-indigo-500/20",  glow: "hover:shadow-indigo-500/10" },
+  blue:    { border: "border-blue-500/50",    label: "text-blue-400",    badge: "bg-blue-500/10 text-blue-300 hover:bg-blue-500/25 border border-blue-500/20",            glow: "hover:shadow-blue-500/10" },
+  orange:  { border: "border-orange-500/50",  label: "text-orange-400",  badge: "bg-orange-500/10 text-orange-300 hover:bg-orange-500/25 border border-orange-500/20",    glow: "hover:shadow-orange-500/10" },
+  sky:     { border: "border-sky-500/50",     label: "text-sky-400",     badge: "bg-sky-500/10 text-sky-300 hover:bg-sky-500/25 border border-sky-500/20",                glow: "hover:shadow-sky-500/10" },
+  violet:  { border: "border-violet-500/50",  label: "text-violet-400",  badge: "bg-violet-500/10 text-violet-300 hover:bg-violet-500/25 border border-violet-500/20",    glow: "hover:shadow-violet-500/10" },
+  emerald: { border: "border-emerald-500/50", label: "text-emerald-400", badge: "bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/25 border border-emerald-500/20", glow: "hover:shadow-emerald-500/10" },
 };
 
 export default function Skills() {
   return (
     <>
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="text-3xl lg:text-4xl font-bold mb-3 text-center text-slate-900"
+        className="text-center mb-12"
       >
-        Technical{" "}
-        <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-          Skills
-        </span>
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-center text-slate-500 mb-12 max-w-md mx-auto text-sm"
-      >
-        Core stack for building data pipelines, cloud platforms, and AI-powered analytics
-      </motion.p>
+        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3">
+          Technical{" "}
+          <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+            Skills
+          </span>
+        </h2>
+        <p className="text-slate-400 text-sm max-w-md mx-auto">
+          Core stack for building data pipelines, cloud platforms, and AI-powered analytics
+        </p>
+      </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {categories.map((cat, i) => (
-          <motion.div
-            key={cat.label}
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, margin: "-30px" }}
-            transition={{ duration: 0.4, delay: i * 0.07 }}
-            className={`bg-white border-l-4 ${borderColor[cat.accent]} border border-slate-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-shadow`}
-          >
-            <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${labelColor[cat.accent]}`}>
-              {cat.label}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {cat.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className={`text-sm px-3 py-1 rounded-full font-medium ${badgeColor[cat.accent]}`}
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {categories.map((cat, i) => {
+          const s = styles[cat.accent];
+          return (
+            <motion.div
+              key={cat.label}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false, margin: "-30px" }}
+              transition={{ duration: 0.4, delay: i * 0.07 }}
+              className={`bg-slate-900/60 border-l-4 ${s.border} border border-slate-800 rounded-2xl p-5 hover:border-slate-700 hover:-translate-y-0.5 hover:shadow-xl ${s.glow} transition-all duration-300`}
+            >
+              <p className={`text-xs font-bold uppercase tracking-widest mb-3 ${s.label}`}>
+                {cat.label}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {cat.skills.map((skill) => (
+                  <span
+                    key={skill}
+                    className={`text-xs px-3 py-1 rounded-full font-medium cursor-default transition-all duration-200 ${s.badge}`}
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </>
   );

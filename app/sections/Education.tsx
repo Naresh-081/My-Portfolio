@@ -21,26 +21,22 @@ const degrees = [
 export default function Education() {
   return (
     <>
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="text-3xl lg:text-4xl font-bold mb-3 text-center text-slate-900"
+        className="text-center mb-12"
       >
-        Education
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-center text-slate-500 mb-12 max-w-md mx-auto text-sm"
-      >
-        Academic background in computer science with focus on AI/ML and data systems
-      </motion.p>
+        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3">
+          Education
+        </h2>
+        <p className="text-slate-400 text-sm max-w-md mx-auto">
+          Academic background in computer science with focus on AI/ML and data systems
+        </p>
+      </motion.div>
 
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid md:grid-cols-2 gap-5">
         {degrees.map((d, i) => (
           <motion.div
             key={d.school}
@@ -48,25 +44,25 @@ export default function Education() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-50px" }}
             transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm hover:shadow-md transition-shadow"
+            className="bg-slate-900/60 border border-slate-800 hover:border-indigo-500/30 rounded-2xl p-7 shadow-lg hover:shadow-indigo-500/10 hover:-translate-y-0.5 transition-all duration-300"
           >
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <div>
-                <h3 className="text-base font-bold text-slate-900 mb-1">{d.degree}</h3>
-                <p className="text-indigo-600 font-medium text-sm">{d.school}</p>
-              </div>
-              <span className="shrink-0 text-xs font-semibold bg-slate-100 text-slate-600 px-2.5 py-1 rounded-full">
-                GPA {d.gpa}
+            <div className="flex items-start justify-between gap-4 mb-3">
+              <h3 className="text-sm font-bold text-white leading-snug">{d.degree}</h3>
+              <span className="shrink-0 text-xs font-semibold bg-indigo-500/15 text-indigo-400 border border-indigo-500/25 px-2.5 py-1 rounded-full">
+                {d.gpa}
               </span>
             </div>
 
-            <p className="text-xs text-slate-400 mb-4">{d.period}</p>
+            <p className="text-indigo-400 font-semibold text-sm mb-1">{d.school}</p>
+            <p className="text-xs text-slate-500 mb-5">{d.period}</p>
 
             <div>
-              <p className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-2">Relevant Coursework</p>
+              <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-2.5">
+                Relevant Coursework
+              </p>
               <div className="flex flex-wrap gap-2">
                 {d.courses.map((c) => (
-                  <span key={c} className="text-xs bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full">
+                  <span key={c} className="text-xs bg-slate-800 text-slate-300 border border-slate-700 px-2.5 py-1 rounded-full hover:border-indigo-500/40 hover:text-indigo-300 transition-colors cursor-default">
                     {c}
                   </span>
                 ))}

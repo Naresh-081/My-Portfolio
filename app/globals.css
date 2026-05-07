@@ -4,12 +4,23 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
 @keyframes blob {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33%       { transform: translate(30px, -20px) scale(1.05); }
   66%       { transform: translate(-20px, 20px) scale(0.95); }
 }
 
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
 .animate-blob            { animation: blob 8s ease-in-out infinite; }
 .animation-delay-2000    { animation-delay: 2s; }
 .animation-delay-4000    { animation-delay: 4s; }
+.animate-shimmer         { animation: shimmer 3s linear infinite; }

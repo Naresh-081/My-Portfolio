@@ -41,73 +41,72 @@ const experiences = [
 export default function Experience() {
   return (
     <>
-      <motion.h2
+      <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, margin: "-50px" }}
         transition={{ duration: 0.5 }}
-        className="text-3xl lg:text-4xl font-bold mb-3 text-center text-slate-900"
+        className="text-center mb-14"
       >
-        Work{" "}
-        <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
-          Experience
-        </span>
-      </motion.h2>
-      <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.5, delay: 0.1 }}
-        className="text-center text-slate-500 mb-14 max-w-md mx-auto text-sm"
-      >
-        3+ years across data engineering, real-time streaming, and AI-powered analytics
-      </motion.p>
+        <h2 className="text-3xl lg:text-4xl font-bold text-white mb-3">
+          Work{" "}
+          <span className="bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
+            Experience
+          </span>
+        </h2>
+        <p className="text-slate-400 text-sm max-w-md mx-auto">
+          3+ years across data engineering, real-time streaming, and AI-powered analytics
+        </p>
+      </motion.div>
 
-      <div className="relative border-l-2 border-slate-200 ml-4 md:ml-10 space-y-10">
-        {experiences.map((exp, i) => (
-          <motion.div
-            key={exp.company}
-            initial={{ opacity: 0, x: -40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: i * 0.1 }}
-            className="relative pl-8 md:pl-12"
-          >
-            {/* Timeline dot */}
-            <div className="absolute -left-[9px] top-6 w-4 h-4 rounded-full bg-indigo-600 border-4 border-white shadow-sm" />
+      <div className="relative pl-4 md:pl-8">
+        {/* Vertical timeline line */}
+        <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-500 via-slate-700 to-transparent" />
 
-            <div className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
-              {/* Header */}
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-5">
-                <div>
-                  <div className="flex items-center gap-2.5 flex-wrap mb-0.5">
-                    <h3 className="text-lg font-bold text-slate-900">{exp.role}</h3>
-                    {exp.badge && (
-                      <span className="text-xs font-semibold bg-violet-100 text-violet-700 px-2.5 py-0.5 rounded-full border border-violet-200">
-                        {exp.badge}
-                      </span>
-                    )}
+        <div className="space-y-8">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={exp.company}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="relative group"
+            >
+              {/* Timeline dot */}
+              <div className="absolute -left-[21px] md:-left-[25px] top-7 w-3 h-3 rounded-full bg-indigo-500 border-2 border-[#040d1c] shadow-lg shadow-indigo-500/30 group-hover:scale-125 transition-transform duration-300" />
+
+              <div className="bg-slate-900/60 border border-slate-800 hover:border-indigo-500/40 rounded-2xl p-6 md:p-7 shadow-lg hover:shadow-indigo-500/10 hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5 ml-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-3 mb-5">
+                  <div>
+                    <div className="flex items-center gap-2.5 flex-wrap mb-1">
+                      <h3 className="text-base font-bold text-white">{exp.role}</h3>
+                      {exp.badge && (
+                        <span className="text-xs font-semibold bg-violet-500/15 text-violet-400 px-2.5 py-0.5 rounded-full border border-violet-500/25">
+                          {exp.badge}
+                        </span>
+                      )}
+                    </div>
+                    <p className="text-indigo-400 font-semibold text-sm">{exp.company}</p>
                   </div>
-                  <p className="text-indigo-600 font-semibold">{exp.company}</p>
+                  <div className="text-right shrink-0">
+                    <p className="text-sm font-medium text-slate-300">{exp.period}</p>
+                    <p className="text-xs text-slate-500 mt-0.5">{exp.location}</p>
+                  </div>
                 </div>
-                <div className="text-right shrink-0">
-                  <p className="text-sm font-medium text-slate-700">{exp.period}</p>
-                  <p className="text-xs text-slate-400 mt-0.5">{exp.location}</p>
-                </div>
-              </div>
 
-              {/* Bullets */}
-              <ul className="space-y-2.5">
-                {exp.points.map((pt, j) => (
-                  <li key={j} className="flex items-start gap-3 text-sm text-slate-600 leading-relaxed">
-                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-400 shrink-0" />
-                    {pt}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        ))}
+                <ul className="space-y-2.5">
+                  {exp.points.map((pt, j) => (
+                    <li key={j} className="flex items-start gap-3 text-sm text-slate-400 leading-relaxed">
+                      <span className="mt-2 w-1.5 h-1.5 rounded-full bg-indigo-500/60 shrink-0" />
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </>
   );
