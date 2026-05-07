@@ -10,12 +10,11 @@ import SectionWrapper from "./components/SectionWraper";
 
 export default function Home() {
   return (
-    <main className="relative bg-white dark:bg-gray-900">
+    <main className="bg-white">
       <Header />
-
       <Hero />
 
-      <SectionWrapper id="education">
+      <SectionWrapper id="education" bgClass="bg-slate-50">
         <Education />
       </SectionWrapper>
 
@@ -23,7 +22,7 @@ export default function Home() {
         <Skills />
       </SectionWrapper>
 
-      <SectionWrapper id="experience" reducedPadding>
+      <SectionWrapper id="experience" reducedPadding bgClass="bg-slate-50">
         <Experience />
       </SectionWrapper>
 
@@ -31,7 +30,7 @@ export default function Home() {
         <Projects />
       </SectionWrapper>
 
-      <SectionWrapper id="contact" reducedPadding>
+      <SectionWrapper id="contact" reducedPadding bgClass="bg-slate-50">
         <Contact />
       </SectionWrapper>
 

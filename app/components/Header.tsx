@@ -1,104 +1,124 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
+
+const navLinks = ['education', 'skills', 'experience', 'projects', 'contact'];
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState('hero');
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const handleScroll = (e: React.MouseEvent, sectionId: string) => {
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const scrollTo = (e: React.MouseEvent, id: string) => {
     e.preventDefault();
-    setActiveSection(sectionId.toLowerCase());
-    setIsMobileMenuOpen(false); // Close menu on selection
-    document.getElementById(sectionId.toLowerCase())?.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
-    });
+    setActiveSection(id);
+    setMenuOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
-  const navLinks = [ 'education', 'skills', 'experience', 'projects', 'contact'];
-
   return (
-    <header className="fixed top-0 w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-200 shadow-sm">
-      <nav className="max-w-7xl mx-auto px-5 h-16 flex items-center justify-between">
-        {/* Left-aligned name/logo */}
-        <div className="text-3xl font-bold bg-gradient-to-r from-[#4f46e5] to-[#3730a3] bg-clip-text text-transparent">
-          <Link href="#hero" onClick={(e) => handleScroll(e, 'hero')}>
-            NARESH VEMULA
-          </Link>
-        </div>
+    <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200' : 'bg-transparent'
+    }`}>
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex gap-8">
-          {navLinks.map((section) => (
+        <Link
+          href="#hero"
+          onClick={(e) => scrollTo(e, 'hero')}
+          className={`text-lg font-bold tracking-tight transition-colors ${
+            scrolled ? 'text-slate-900' : 'text-white'
+          }`}
+        >
+          Naresh Vemula
+        </Link>
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((s) => (
             <Link
-              key={section}
-              href={`#${section}`}
-              onClick={(e) => handleScroll(e, section)}
-              className={`capitalize text-lg font-medium transition-all ${
-                activeSection === section
-                  ? 'text-[#4338ca] border-b-2 border-[#4f46e5]'
-                  : 'text-gray-600 hover:text-[#4f46e5]'
+              key={s}
+              href={`#${s}`}
+              onClick={(e) => scrollTo(e, s)}
+              className={`capitalize text-sm font-medium transition-colors ${
+                activeSection === s
+                  ? 'text-indigo-600'
+                  : scrolled
+                    ? 'text-slate-600 hover:text-slate-900'
+                    : 'text-white/70 hover:text-white'
               }`}
             >
-              {section}
+              {s}
             </Link>
           ))}
         </div>
 
-        {/* Social Icons (always visible) */}
-        <div className="hidden md:flex gap-5">
-          <a href="https://github.com/Naresh-081" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
-            <FaGithub size={24} />
+        {/* Icons */}
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href="https://github.com/Naresh-081"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`transition-colors ${scrolled ? 'text-slate-500 hover:text-slate-900' : 'text-white/70 hover:text-white'}`}
+          >
+            <FaGithub size={20} />
           </a>
-          <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
-            <FaLinkedin size={24} />
+          <a
+            href="https://www.linkedin.com/in/naresh-vemula-149b15238/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`transition-colors ${scrolled ? 'text-slate-500 hover:text-slate-900' : 'text-white/70 hover:text-white'}`}
+          >
+            <FaLinkedin size={20} />
           </a>
-          <a href="mailto:vemulanaresh333@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
-            <FaEnvelope size={24} />
+          <a
+            href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 rounded-lg transition-colors"
+          >
+            Resume
           </a>
         </div>
 
-        {/* Mobile Menu Icon */}
+        {/* Mobile toggle */}
         <button
-          className="md:hidden text-gray-600 hover:text-[#4f46e5] focus:outline-none"
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className={`md:hidden text-sm font-medium ${scrolled ? 'text-slate-700' : 'text-white'}`}
+          onClick={() => setMenuOpen(!menuOpen)}
         >
-          {isMobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+          {menuOpen ? '✕ Close' : '☰ Menu'}
         </button>
       </nav>
 
-      {/* Mobile Menu Dropdown */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200 shadow-md px-5 py-4 space-y-4">
-          {navLinks.map((section) => (
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-200 px-4 py-4 space-y-3">
+          {navLinks.map((s) => (
             <Link
-              key={section}
-              href={`#${section}`}
-              onClick={(e) => handleScroll(e, section)}
-              className={`block capitalize text-lg font-medium ${
-                activeSection === section
-                  ? 'text-[#4338ca]'
-                  : 'text-gray-600 hover:text-[#4f46e5]'
+              key={s}
+              href={`#${s}`}
+              onClick={(e) => scrollTo(e, s)}
+              className={`block capitalize text-sm font-medium py-1 ${
+                activeSection === s ? 'text-indigo-600' : 'text-slate-600'
               }`}
             >
-              {section}
+              {s}
             </Link>
           ))}
-
-          {/* Mobile Social Icons */}
-          <div className="flex justify-start gap-4 pt-4 border-t border-gray-100">
-            <a href="https://github.com/Naresh-081" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
-              <FaGithub size={24} />
-            </a>
-            <a href="https://www.linkedin.com/in/naresh-vemula-149b15238/" target="_blank" className="text-gray-600 hover:text-[#4f46e5]">
-              <FaLinkedin size={24} />
-            </a>
-            <a href="mailto:vemulanaresh333@gmail.com" className="text-gray-600 hover:text-[#4f46e5]">
-              <FaEnvelope size={24} />
-            </a>
-          </div>
+          <a
+            href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-sm font-medium text-indigo-600 pt-1"
+          >
+            View Resume →
+          </a>
         </div>
       )}
     </header>

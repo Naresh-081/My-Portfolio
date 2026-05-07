@@ -5,7 +5,7 @@ export default function SectionWrapper({
   children,
   className = '',
   reducedPadding = false,
-  bgClass = 'bg-gradient-to-br from-gray-50 to-gray-100'
+  bgClass = 'bg-white',
 }: {
   id: string;
   children: React.ReactNode;
@@ -16,12 +16,7 @@ export default function SectionWrapper({
   return (
     <section
       id={id}
-      className={`
-        ${reducedPadding ? 'py-12 lg:py-16' : 'py-16 lg:py-20'}
-        ${bgClass}
-        text-gray-800
-        ${className}
-      `}
+      className={`${reducedPadding ? 'py-14 lg:py-20' : 'py-20 lg:py-28'} ${bgClass} ${className}`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {children}

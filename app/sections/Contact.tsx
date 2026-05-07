@@ -1,233 +1,166 @@
-// src/app/sections/Contact.tsx
-
-
 'use client';
 import { useState } from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaFilePdf } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import SectionWrapper from '../components/SectionWraper';
 import emailjs from 'emailjs-com';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+const contactItems = [
+  { icon: <FaEnvelope />, label: "Email", value: "vemulanaresh333@gmail.com", href: "mailto:vemulanaresh333@gmail.com" },
+  { icon: <FaPhoneAlt />, label: "Phone", value: "+1 (361) 742-9587", href: "tel:+13617429587" },
+  { icon: <FaLinkedin />, label: "LinkedIn", value: "naresh-vemula", href: "https://www.linkedin.com/in/naresh-vemula-149b15238" },
+  { icon: <FaGithub />, label: "GitHub", value: "Naresh-081", href: "https://github.com/Naresh-081" },
+  { icon: <FaFilePdf />, label: "Resume", value: "View PDF", href: "https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing" },
+];
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<null | 'success' | 'error'>(null);
+export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const [submitting, setSubmitting] = useState(false);
+  const [status, setStatus] = useState<null | 'success' | 'error'>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus(null);
-  
+    setSubmitting(true);
+    setStatus(null);
     try {
-      const response = await emailjs.sendForm(
-        'service_7t7moih',  // Service ID
-        'template_cteh7wk', // Template ID
-        e.target as HTMLFormElement,  // Form Element
-        'jqEMOrc_xTsGxvLZH'  // Public API Key
-      );
-      if (response.status === 200) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setSubmitStatus('error');
-      }
-    } catch (error) {
-      setSubmitStatus('error');
-      console.error('Email sending failed:', error); // Now using the error variable
+      const res = await emailjs.sendForm('service_7t7moih', 'template_cteh7wk', e.target as HTMLFormElement, 'jqEMOrc_xTsGxvLZH');
+      setStatus(res.status === 200 ? 'success' : 'error');
+      if (res.status === 200) setForm({ name: '', email: '', message: '' });
+    } catch {
+      setStatus('error');
     } finally {
-      setIsSubmitting(false);
+      setSubmitting(false);
     }
   };
-  
-  
-
-  const contactItems = [
-    {
-      icon: <FaEnvelope className="w-5 h-5" />,
-      title: "Email",
-      content: "vemulanaresh333@gmail.com",
-      href: "mailto:vemulanaresh333@gmail.com"
-    },
-    {
-      icon: <FaPhoneAlt className="w-5 h-5" />,
-      title: "Phone",
-      content: "+1 (361) 742-9587",
-      href: "tel:+13617429587"
-    },
-    {
-      icon: <FaLinkedin className="w-5 h-5" />,
-      title: "LinkedIn",
-      content: "linkedin.com/in/naresh-vemula",
-      href: "https://www.linkedin.com/in/naresh-vemula-149b15238"
-    },
-    {
-      icon: <FaGithub className="w-5 h-5" />,
-      title: "GitHub",
-      content: "github.com/Naresh-081",
-      href: "https://github.com/Naresh-081"
-    },
-    {
-      icon: <FaFilePdf className="w-5 h-5" />,
-      title: "Resume",
-      content: "View",
-      href: "https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
-    }
-  ];
 
   return (
-    <SectionWrapper id="contact" className="bg-gray-50 py-12 lg:py-16">
-      <div className="max-w-6xl mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <>
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, margin: "-50px" }}
+        transition={{ duration: 0.5 }}
+        className="text-3xl lg:text-4xl font-bold mb-3 text-center text-slate-900"
+      >
+        Get in{" "}
+        <span className="bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent">
+          Touch
+        </span>
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-center text-slate-500 mb-12 max-w-md mx-auto text-sm"
+      >
+        Open to data engineering roles, collaborations, and interesting problems
+      </motion.p>
+
+      <div className="grid md:grid-cols-2 gap-8">
+        {/* Form */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: false, margin: "-50px" }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold mb-8 text-center text-gray-800"
+          className="bg-white border border-slate-200 rounded-2xl p-7 shadow-sm"
         >
-          Get <span className="text-[#4f46e5]">In Touch</span>
-        </motion.h2>
+          <h3 className="text-base font-bold text-slate-900 mb-5">Send a message</h3>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
-            className="bg-white p-6 rounded-xl shadow-md"
-          >
-            <h3 className="text-xl font-semibold mb-4">Send me a message</h3>
-            
-            {submitStatus === 'success' && (
-              <div className="mb-4 p-3 bg-green-100 text-green-800 rounded-lg">
-                Thank you! Your message has been sent.
-              </div>
-            )}
-            
-            {submitStatus === 'error' && (
-              <div className="mb-4 p-3 bg-red-100 text-red-800 rounded-lg">
-                Oops! Something went wrong. Please try again.
-              </div>
-            )}
+          {status === 'success' && (
+            <p className="mb-4 text-sm bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-lg px-4 py-2.5">
+              Message sent — I&apos;ll get back to you soon!
+            </p>
+          )}
+          {status === 'error' && (
+            <p className="mb-4 text-sm bg-red-50 text-red-700 border border-red-200 rounded-lg px-4 py-2.5">
+              Something went wrong. Please try again.
+            </p>
+          )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-1">
-                  Name
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {[
+              { id: 'name', label: 'Name', type: 'text', placeholder: 'Your name' },
+              { id: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com' },
+            ].map(({ id, label, type, placeholder }) => (
+              <div key={id}>
+                <label htmlFor={id} className="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wide">
+                  {label}
                 </label>
                 <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.name}
+                  type={type}
+                  id={id}
+                  name={id}
+                  value={form[id as keyof typeof form]}
                   onChange={handleChange}
                   required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4f46e5] focus:border-[#4f46e5] transition-all"
-                  placeholder="Your name"
+                  placeholder={placeholder}
+                  className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition"
                 />
               </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-1">
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4f46e5] focus:border-[#4f46e5] transition-all"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-1">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#4f46e5] focus:border-[#4f46e5] transition-all"
-                  placeholder="Your message here..."
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`w-full bg-[#4f46e5] hover:bg-[#4338ca] text-white py-2 px-4 rounded-lg transition-colors font-medium ${
-                  isSubmitting ? 'opacity-70 cursor-not-allowed' : ''
-                }`}
-              >
-                {isSubmitting ? 'Sending...' : 'Send Message'}
-              </button>
-            </form>
-          </motion.div>
-
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, margin: "-50px" }}
-            transition={{ duration: 0.5 }}
-            className="space-y-6"
-          >
+            ))}
             <div>
-              <h3 className="text-xl font-semibold mb-2">Contact Information</h3>
-              <p className="text-gray-600">
-                Feel free to reach out for collaborations or just to say hello!
-              </p>
+              <label htmlFor="message" className="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wide">
+                Message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                value={form.message}
+                onChange={handleChange}
+                required
+                placeholder="Your message..."
+                className="w-full px-3.5 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition resize-none"
+              />
             </div>
+            <button
+              type="submit"
+              disabled={submitting}
+              className="w-full bg-indigo-600 hover:bg-indigo-500 disabled:opacity-60 text-white py-2.5 px-4 rounded-lg text-sm font-semibold transition-colors"
+            >
+              {submitting ? 'Sending…' : 'Send Message'}
+            </button>
+          </form>
+        </motion.div>
 
-            <div className="space-y-4">
-              {contactItems.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: false }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-4 group"
-                >
-                  <div className="p-2 bg-[#4f46e5]/10 text-[#4f46e5] rounded-lg group-hover:bg-[#4f46e5] group-hover:text-white transition-colors">
-                    {item.icon}
-                  </div>
-                  <div>
-                    <h4 className="font-medium">{item.title}</h4>
-                    <a 
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-[#4f46e5] transition-colors"
-                    >
-                      {item.content}
-                    </a>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+        {/* Contact info */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, margin: "-50px" }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col justify-center space-y-4"
+        >
+          <p className="text-slate-600 text-sm mb-2">
+            Feel free to reach out for roles, collaborations, or just to connect.
+          </p>
+          {contactItems.map((item, i) => (
+            <motion.a
+              key={i}
+              href={item.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: false }}
+              transition={{ delay: i * 0.07 }}
+              className="flex items-center gap-4 bg-white border border-slate-200 rounded-xl px-5 py-3.5 shadow-sm hover:shadow-md hover:border-indigo-200 transition-all group"
+            >
+              <span className="text-indigo-600 group-hover:text-indigo-500 transition-colors text-base">
+                {item.icon}
+              </span>
+              <div>
+                <p className="text-xs text-slate-400 font-medium">{item.label}</p>
+                <p className="text-sm font-semibold text-slate-800">{item.value}</p>
+              </div>
+            </motion.a>
+          ))}
+        </motion.div>
       </div>
-    </SectionWrapper>
+    </>
   );
-};
-
-export default Contact;
+}

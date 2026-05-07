@@ -1,21 +1,16 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Naresh Vemula | Computer Science Graduate",
-  description: "AI/ML Enthusiast and Full Stack Developer",
+  title: "Naresh Vemula | Data Engineer",
+  description: "Data Engineer specializing in ETL/ELT pipelines, real-time streaming, AWS, Snowflake, and AI/LLM integration.",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      <body className="antialiased">
+    <html lang="en">
+      <body className={`${GeistSans.className} antialiased text-slate-900 bg-white`}>
         {children}
       </body>
     </html>

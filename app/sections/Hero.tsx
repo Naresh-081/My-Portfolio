@@ -4,123 +4,128 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "3M+", label: "Records/Day (Tesla)" },
-  { value: "AWS", label: "& Snowflake" },
-  { value: "LLM", label: "RAG / LangChain" }
+  { value: "3+",   label: "Years Experience" },
+  { value: "3M+",  label: "Records / Day" },
+  { value: "AWS",  label: "& Snowflake" },
+  { value: "LLM",  label: "RAG · LangChain" },
 ];
 
 export default function Hero() {
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-      {/* Decorative blobs */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob" />
-        <div className="absolute top-0 right-1/4 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000" />
-        <div className="absolute bottom-0 left-1/2 w-72 h-72 bg-indigo-100 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000" />
-      </div>
+    <section id="hero" className="relative min-h-screen flex items-center bg-[#020617] overflow-hidden">
 
-      <div className="max-w-7xl mx-auto px-4 py-20 flex flex-col lg:flex-row items-center gap-16 relative z-10">
-        {/* Profile Image */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: false, margin: "-100px" }}
-          transition={{ type: 'spring', stiffness: 100 }}
-          className="relative w-72 h-72 lg:w-80 lg:h-80 rounded-2xl overflow-hidden shadow-2xl bg-white border-8 border-white transform rotate-3 hover:rotate-0 transition-transform duration-500 shrink-0"
-        >
-          <Image
-            src="/profile-pic.png"
-            alt="Naresh Vemula"
-            fill
-            className="object-cover"
-            priority
-          />
-        </motion.div>
+      {/* Subtle grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff06_1px,transparent_1px),linear-gradient(to_bottom,#ffffff06_1px,transparent_1px)] bg-[size:72px_72px]" />
 
-        {/* Intro Text */}
-        <div className="text-center lg:text-left max-w-2xl">
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ type: 'spring', stiffness: 100 }}
-            className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 text-indigo-700 text-sm font-medium px-4 py-1.5 rounded-full mb-4"
-          >
-            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-            Open to opportunities
-          </motion.div>
+      {/* Ambient glow */}
+      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-indigo-700/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-violet-700/15 rounded-full blur-3xl pointer-events-none" />
 
-          <motion.h1
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ delay: 0.05, type: 'spring', stiffness: 100 }}
-            className="text-5xl lg:text-6xl font-bold mb-3 text-gray-800"
-          >
-            Naresh Vemula
-          </motion.h1>
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28 w-full">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-14 lg:gap-20">
 
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ delay: 0.1, type: 'spring', stiffness: 100 }}
-            className="text-2xl text-[#4f46e5] mb-5 font-semibold"
-          >
-            Data Engineer · Cloud & ETL · AI/LLM
-          </motion.p>
+          {/* ── Text ── */}
+          <div className="flex-1 text-center lg:text-left">
 
-          <motion.p
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ delay: 0.15, type: 'spring', stiffness: 100 }}
-            className="text-lg text-gray-600 mb-8 leading-relaxed"
-          >
-            Data Engineer with 3+ years of experience building scalable ETL/ELT pipelines, real-time streaming systems,
-            and cloud-native data platforms on AWS and Snowflake. Experienced integrating LLM capabilities — RAG, LangChain,
-            vector search — into data workflows to enable self-service analytics and AI-powered data discovery.
-          </motion.p>
-
-          {/* Stats row */}
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 100 }}
-            className="grid grid-cols-4 gap-4 mb-8"
-          >
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center lg:text-left">
-                <p className="text-xl font-bold text-[#4f46e5]">{stat.value}</p>
-                <p className="text-xs text-gray-500 leading-tight">{stat.label}</p>
-              </div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1 }}
-            viewport={{ once: false }}
-            transition={{ delay: 0.25, type: 'spring', stiffness: 100 }}
-            className="flex flex-wrap justify-center lg:justify-start gap-4"
-          >
-            <Link
-              href="#contact"
-              className="bg-[#4f46e5] hover:bg-[#4338ca] text-white px-8 py-3 rounded-lg text-lg font-medium transition-colors shadow-lg hover:shadow-xl"
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="inline-flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/25 text-indigo-400 text-sm font-medium px-4 py-1.5 rounded-full mb-6"
             >
-              Contact Me
-            </Link>
-            <Link
-              href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white hover:bg-gray-50 text-gray-800 px-8 py-3 rounded-lg text-lg font-medium transition-colors shadow-lg hover:shadow-xl border border-gray-200"
+              <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse shrink-0" />
+              Open to opportunities
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="text-5xl lg:text-7xl font-bold text-white tracking-tight leading-none mb-5"
             >
-              View Resume
-            </Link>
+              Naresh<br className="hidden lg:block" /> Vemula
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="text-xl lg:text-2xl font-semibold mb-6 bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent"
+            >
+              Data Engineer · Cloud &amp; ETL · AI / LLM
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="text-slate-400 text-base lg:text-lg leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0"
+            >
+              3+ years building scalable ETL/ELT pipelines, real-time streaming systems,
+              and cloud-native platforms on AWS and Snowflake. Integrating LLM capabilities —
+              RAG, LangChain, vector search — into production data workflows.
+            </motion.p>
+
+            {/* Stats */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="grid grid-cols-4 gap-4 mb-10 max-w-sm mx-auto lg:mx-0"
+            >
+              {stats.map((s) => (
+                <div key={s.label} className="border-l-2 border-indigo-500/40 pl-3">
+                  <p className="text-lg font-bold text-white">{s.value}</p>
+                  <p className="text-xs text-slate-500 leading-tight mt-0.5">{s.label}</p>
+                </div>
+              ))}
+            </motion.div>
+
+            {/* CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
+              className="flex flex-wrap justify-center lg:justify-start gap-3"
+            >
+              <Link
+                href="#contact"
+                className="bg-indigo-600 hover:bg-indigo-500 text-white px-7 py-3 rounded-lg font-medium text-sm transition-colors"
+              >
+                Contact Me
+              </Link>
+              <Link
+                href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white px-7 py-3 rounded-lg font-medium text-sm transition-colors"
+              >
+                View Resume
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* ── Photo ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="shrink-0 relative"
+          >
+            {/* glow */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-indigo-600/40 to-violet-600/30 rounded-3xl blur-2xl" />
+            <div className="relative w-60 h-60 lg:w-76 lg:h-76 rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+                 style={{ width: '18rem', height: '18rem' }}>
+              <Image
+                src="/profile-pic.png"
+                alt="Naresh Vemula"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </motion.div>
+
         </div>
       </div>
     </section>
