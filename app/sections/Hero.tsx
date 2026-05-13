@@ -94,14 +94,6 @@ export default function Hero() {
               >
                 Contact Me
               </Link>
-              <Link
-                href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/15 hover:border-white/30 bg-white/5 hover:bg-white/10 text-white px-7 py-3 rounded-lg font-medium text-sm transition-colors"
-              >
-                View Resume
-              </Link>
             </motion.div>
           </div>
 

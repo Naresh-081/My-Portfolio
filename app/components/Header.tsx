@@ -91,11 +91,6 @@ export default function Header() {
               {s}
             </Link>
           ))}
-          <a href="https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing"
-             target="_blank" rel="noopener noreferrer"
-             className="block text-sm font-semibold text-indigo-400 pt-2 border-t border-slate-800">
-            View Resume →
-          </a>
         </div>
       )}
     </header>

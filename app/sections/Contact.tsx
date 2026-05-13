@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaFilePdf } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import emailjs from 'emailjs-com';
 
@@ -9,7 +9,6 @@ const contactItems = [
   { icon: <FaPhoneAlt />,  label: "Phone",    value: "+1 (361) 742-9587",              href: "tel:+13617429587" },
   { icon: <FaLinkedin />,  label: "LinkedIn", value: "naresh-vemula",                  href: "https://www.linkedin.com/in/naresh-vemula-149b15238" },
   { icon: <FaGithub />,    label: "GitHub",   value: "Naresh-081",                     href: "https://github.com/Naresh-081" },
-  { icon: <FaFilePdf />,   label: "Resume",   value: "View PDF",                       href: "https://drive.google.com/file/d/1yJyZ5eBI1CcaHf9VpJ-O-4FyDNT95WqP/view?usp=sharing" },
 ];
 
 export default function Contact() {
