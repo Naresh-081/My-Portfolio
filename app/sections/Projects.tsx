@@ -14,7 +14,7 @@ const projects = [
       "AI assistant converting natural language to Snowflake SQL using LangChain + OpenAI, with RAG over schema metadata via FAISS; cut manual SQL dependency by ~40%.",
       "REST API via FastAPI with async query execution and JSON responses, ready for BI tool integration.",
     ],
-    links: [],
+    links: [{ label: "GitHub", url: "https://github.com/Naresh-081/nl-sql-assistant", type: "github" }],
   },
   {
     title: "Real-Time Streaming Pipeline with Anomaly Detection",

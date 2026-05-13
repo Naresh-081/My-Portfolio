@@ -28,7 +28,7 @@ const experiences = [
   },
   {
     company: "Wipro",
-    role: "Data Engineering Intern",
+    role: "Junior Data Engineer",
     location: "Hyderabad, India",
     period: "Feb 2021 – Oct 2022",
     points: [
